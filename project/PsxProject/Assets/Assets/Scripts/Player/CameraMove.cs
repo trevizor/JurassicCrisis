@@ -15,9 +15,9 @@ public class CameraMove : MonoBehaviour {
 
 
     //to create head bob effect    
-    public float transitionSpeed = 20f; //smooths out the transition from moving to not moving.
-    public float bobSpeed = 4.8f; //how quickly the player's head bobs.
-    public float bobAmount = 0.08f; //how dramatic the bob is. Increasing this in conjunction with bobSpeed gives a nice effect for sprinting.
+    public float transitionSpeed = 200f; //smooths out the transition from moving to not moving.
+    public float bobSpeed = 3.5f; //how quickly the player's head bobs.
+    public float bobAmount = 0.06f; //how dramatic the bob is. Increasing this in conjunction with bobSpeed gives a nice effect for sprinting.
 
     float timer = Mathf.PI / 2; //initialized as this value because this is where sin = 1. So, this will make the camera always start at the crest of the sin wave, simulating someone picking up their foot and starting to walk--you experience a bob upwards when you start walking as your foot pushes off the ground, the left and right bobs come as you walk.
 
@@ -35,7 +35,7 @@ public class CameraMove : MonoBehaviour {
         currentCamera = Transform.FindObjectOfType<Camera>();
         originalRotation = currentCamera.transform.localRotation;
         restPosition = currentCamera.transform.localPosition;
-        crouchRestPosition = new Vector3(currentCamera.transform.localPosition.x, currentCamera.transform.localPosition.y*0.65f, currentCamera.transform.localPosition.z); //sets crouch height to 65% of normal height
+        crouchRestPosition = new Vector3(currentCamera.transform.localPosition.x, currentCamera.transform.localPosition.y*0.5f, currentCamera.transform.localPosition.z); //sets crouch height to 65% of normal height
         standingRestPosition = restPosition;
 
         Cursor.visible = false; //hides mouse
@@ -56,6 +56,7 @@ public class CameraMove : MonoBehaviour {
     }
     void CalculateHeadBob ()
     {
+        //we can set the head bob based on the rigid body velocity!
         //set camera height based on crouch input
         restPosition = standingRestPosition;
         if (Input.GetButton(currentControllerManager.crouch))

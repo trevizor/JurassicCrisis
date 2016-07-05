@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         runSpeed = 5.0f;
         crouchSpeed = 1.5f;
         gravityForce = 12.0f;
-        maxVelocityChange = 10.0f;
+        maxVelocityChange = 2.0f;
         jumpHeight = 0.95f;
         airControl = 0.4f;
 
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     bool CheckGrounded ()
     {
         bool isGrounded = false;
-        float varDiff = 0.25f;
+        float varDiff = 0.24f;
         Vector3 forwardPos = new Vector3(currentRigidBody.transform.position.x + varDiff, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z);
         Vector3 backwardPos = new Vector3(currentRigidBody.transform.position.x - varDiff, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z);
         Vector3 leftPos = new Vector3(currentRigidBody.transform.position.x, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z + varDiff);
