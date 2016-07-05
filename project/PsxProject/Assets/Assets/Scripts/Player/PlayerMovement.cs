@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         actorStandHeight = GetComponent<CapsuleCollider>().height + 0.1f; //adds 0.1f so it works better with slopes //TODO: find a better way to check grounded
 
         walkSpeed = 3.0f;
-        runSpeed = 6.0f;
+        runSpeed = 5.0f;
         crouchSpeed = 1.5f;
         gravityForce = 12.0f;
         maxVelocityChange = 10.0f;

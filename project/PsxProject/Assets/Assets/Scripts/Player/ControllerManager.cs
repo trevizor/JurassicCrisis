@@ -24,16 +24,17 @@ public class ControllerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Debug.Log(assignedPlayer + "Horizontal");
         //TODO: Set strings for the desired player based on P1, P2 etc
-        walkX = "Horizontal";
-        walkY = "Vertical";
-        jump = "Jump";
-        fire = "Fire";
-        use = "Use";
-        lookX = "Mouse X";
-        lookY = "Mouse Y";
-        crouch = "Crouch";
-        run = "Run";
+        walkX = assignedPlayer + " Horizontal";
+        walkY = assignedPlayer + " Vertical";
+        jump = assignedPlayer + " Jump";
+        fire = assignedPlayer + " Fire";
+        use = assignedPlayer + " Use";
+        lookX = assignedPlayer + " Look X";
+        lookY = assignedPlayer + " Look Y";
+        crouch = assignedPlayer + " Crouch";
+        run = assignedPlayer + " Run";
     }
 	
 	// Update is called once per frame
