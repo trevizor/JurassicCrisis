@@ -24,7 +24,6 @@ public class ControllerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Log(assignedPlayer + "Horizontal");
         //TODO: Set strings for the desired player based on P1, P2 etc
         walkX = assignedPlayer + " Horizontal";
         walkY = assignedPlayer + " Vertical";
