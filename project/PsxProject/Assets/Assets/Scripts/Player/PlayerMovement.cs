@@ -79,9 +79,9 @@ public class PlayerMovement : MonoBehaviour
         {
             currentRigidBody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
         }
-        
+
         //updates grounded status
-        grounded = Physics.Raycast((currentRigidBody.transform.position), Vector3.down, actorStandHeight);
+        grounded = CheckGrounded();
 
         // We apply gravity manually for more tuning control
         if (!grounded)
@@ -89,6 +89,24 @@ public class PlayerMovement : MonoBehaviour
             currentRigidBody.AddForce(new Vector3(0, -gravityForce * currentRigidBody.mass, 0));
         }
         isColliding = false;
+    }
+
+    bool CheckGrounded ()
+    {
+        bool isGrounded = false;
+        float varDiff = 0.25f;
+        Vector3 forwardPos = new Vector3(currentRigidBody.transform.position.x + varDiff, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z);
+        Vector3 backwardPos = new Vector3(currentRigidBody.transform.position.x - varDiff, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z);
+        Vector3 leftPos = new Vector3(currentRigidBody.transform.position.x, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z + varDiff);
+        Vector3 rightPos = new Vector3(currentRigidBody.transform.position.x, currentRigidBody.transform.position.y, currentRigidBody.transform.position.z - varDiff);
+        //verify 4 points of contact
+        isGrounded = (Physics.Raycast(forwardPos, Vector3.down, actorStandHeight) ||
+            Physics.Raycast(backwardPos, Vector3.down, actorStandHeight) ||
+            Physics.Raycast(leftPos, Vector3.down, actorStandHeight) ||
+            Physics.Raycast(rightPos, Vector3.down, actorStandHeight)
+            );
+
+        return isGrounded;
     }
 
     void OnCollisionStay()
