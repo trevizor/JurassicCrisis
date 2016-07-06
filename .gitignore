@@ -32,3 +32,4 @@ Library
 ProcessJobs
 Temp
 /project/PsxProject/Temp/__Backupscenes/*.backup
+/project/PsxProject/Library
