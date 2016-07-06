@@ -3,8 +3,9 @@ using System.Collections;
 
 public class CameraMove : MonoBehaviour {
     //this should be added to the main object, must have a Camera as a child
+    private PlayerEntity currentPlayerEntity;
 
-        //used to clamp rotation and prevent breaking your neck.
+    //used to clamp rotation and prevent breaking your neck.
     private float minimumX = -360F;
     private float maximumX = 360F;
     private float minimumY = -70F;
@@ -15,7 +16,7 @@ public class CameraMove : MonoBehaviour {
 
 
     //to create head bob effect    
-    public float transitionSpeed = 200f; //smooths out the transition from moving to not moving.
+    public float transitionSpeed = 20f; //smooths out the transition from moving to not moving.
     public float bobSpeed = 3.5f; //how quickly the player's head bobs.
     public float bobAmount = 0.06f; //how dramatic the bob is. Increasing this in conjunction with bobSpeed gives a nice effect for sprinting.
 
@@ -31,14 +32,18 @@ public class CameraMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        currentControllerManager = GetComponent<ControllerManager>();
-        currentCamera = Transform.FindObjectOfType<Camera>();
+        currentPlayerEntity = GetComponent<PlayerEntity>();
+        currentControllerManager = currentPlayerEntity.currentControllerManager;
+        currentCamera = currentPlayerEntity.currentCamera;
+        
+        //sets original values
         originalRotation = currentCamera.transform.localRotation;
         restPosition = currentCamera.transform.localPosition;
         crouchRestPosition = new Vector3(currentCamera.transform.localPosition.x, currentCamera.transform.localPosition.y*0.5f, currentCamera.transform.localPosition.z); //sets crouch height to 65% of normal height
         standingRestPosition = restPosition;
 
-        Cursor.visible = false; //hides mouse
+        //hides mouse //this probably should be somewhere else
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame

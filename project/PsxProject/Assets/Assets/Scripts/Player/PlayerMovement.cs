@@ -18,21 +18,29 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private bool isColliding = false;
 
+    private PlayerEntity currentPlayerEntity;
     private Rigidbody currentRigidBody;
     private ControllerManager currentControllerManager;
     private Camera currentCamera;
 
     private const float HEIGHT_MODIFIER = 0.05f;
 
-    void Awake()
+    void Start()
     {
-        currentRigidBody = GetComponent<Rigidbody>();
-        currentControllerManager = GetComponent<ControllerManager>();
-        currentCamera = Transform.FindObjectOfType<Camera>();
+        //sets the component references
+        currentPlayerEntity = GetComponent<PlayerEntity>();
+        currentRigidBody = currentPlayerEntity.currentRigidBody;
+        currentControllerManager = currentPlayerEntity.currentControllerManager;
+        currentCamera = currentPlayerEntity.currentCamera;
+        
+        //whatever the rigid body needs
         currentRigidBody.freezeRotation = true;
         currentRigidBody.useGravity = false;
+
+        //sets the actor stand height based on the collider size
         actorStandHeight = GetComponent<CapsuleCollider>().height + HEIGHT_MODIFIER; //adds HEIGHT_MODIFIER so it works better with slopes //TODO: find a better way to check isGrounded
 
+        //sets movement variables
         walkSpeed = 3.0f;
         runSpeed = 5.0f;
         crouchSpeed = 1.5f;

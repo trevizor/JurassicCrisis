@@ -11,11 +11,11 @@ public class PlayerInteract : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentRigidBody = GetComponent<Rigidbody>();
-		currentControllerManager = GetComponent<ControllerManager>();
         currentPlayerEntity = GetComponent<PlayerEntity>();
-        currentCamera = Transform.FindObjectOfType<Camera>();
-	}
+        currentRigidBody = currentPlayerEntity.currentRigidBody;
+        currentControllerManager = currentPlayerEntity.currentControllerManager;
+        currentCamera = currentPlayerEntity.currentCamera;
+    }
 	
 	// Update is called once per frame
 	void Update () {
