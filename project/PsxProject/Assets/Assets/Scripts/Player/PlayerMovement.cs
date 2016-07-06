@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentPlayerEntity.SetStateIdle();
         }
-
+        Debug.Log(currentPlayerEntity.actionState);
 
         //resets isColliding
         isColliding = false;
