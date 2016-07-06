@@ -9,15 +9,15 @@ public class InteractiveContainer : InteractiveObject
 	private bool isEmpty = false;
 	public Item currentItem;
 
-	void Start () {
-
+	void Start ()
+    {
+        //debug code
         currentItem = new Key("ABC123", "Key");
-
-        //currentItem = new WeaponItem();
-        Debug.Log(currentItem);
+        
 	}
 
-	public override void Interact () {
+	public override void Interact ()
+    {
 		if(!isEmpty){
 			GetContents();
 		} else {
@@ -25,18 +25,34 @@ public class InteractiveContainer : InteractiveObject
 		}
 	}
 
-	public void GetContents () { //this will return an Item
+    public override void SetTargetActor(BaseEntity _targetActor)
+    {
+        targetActor = _targetActor;
+    }
+
+    public void GetContents () //this will return an Item
+    { 
 		isEmpty = true;
-        if(currentItem is Key ){
-            Key tempKey = currentItem as Key;
-            Debug.Log("User got contents: " + tempKey.fingerprint);
-        } else
+        Debug.Log(targetActor);
+        if (targetActor is PlayerEntity)
         {
-            Debug.Log("fuck it");
+            PlayerEntity targetPlayer = targetActor as PlayerEntity;
+            
+            targetPlayer.AddItemToInventory(currentItem);
+            if (currentItem is Key) //this is an example of how to use the item as it really is (key, weapon, health, etc) //DEBUG CODE
+            {
+                Key tempKey = currentItem as Key;
+                Debug.Log("User got key: " + tempKey.fingerprint);
+            } else
+            {
+                Debug.Log("User got item from container: " + currentItem);
+            }
         }
+        
 	}
 
-	public void SetContents (Item _targeContent) { //this will pass an Item
+	public void SetContents (Item _targeContent)  //this will pass an Item
+    {
     
     }
 }

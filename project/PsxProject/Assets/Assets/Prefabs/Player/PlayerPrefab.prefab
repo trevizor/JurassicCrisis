@@ -83,6 +83,8 @@ GameObject:
   - 114: {fileID: 11484306}
   - 114: {fileID: 11465968}
   - 114: {fileID: 11451418}
+  - 114: {fileID: 11481872}
+  - 114: {fileID: 11402468}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -277,6 +279,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191464}
   m_Enabled: 1
+--- !u!114 &11402468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c1b2a3c394e7f48adc13efb757cdf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!114 &11415528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +327,17 @@ MonoBehaviour:
   transitionSpeed: 200
   bobSpeed: 3.5
   bobAmount: 0.06
+--- !u!114 &11481872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cd7af5f17e8bd40a5be43f4dc57364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11484306
 MonoBehaviour:
   m_ObjectHideFlags: 1

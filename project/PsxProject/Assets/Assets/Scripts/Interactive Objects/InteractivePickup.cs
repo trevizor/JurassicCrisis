@@ -5,29 +5,40 @@ public class InteractivePickup : InteractiveObject
 {
 
     // Use this for initialization
-
     private bool isEmpty = false;
     public Item currentItem;
 
     void Start()
     {
-        currentItem = new Key("ABC123", "Key");
+        //debug code
+        currentItem = new Key("ASD456", "Key");
     }
 
     public override void Interact()
     {
-        Debug.Log("Entered Interact of pickup");
         if (!isEmpty)
         {
             GetPickup ();
         }
     }
 
+    public override void SetTargetActor(BaseEntity _targetActor)
+    {
+        targetActor = _targetActor;
+    }
+
     public void GetPickup()
     { //this will return an Item
         isEmpty = true;
-        Debug.Log("User got pickup: " + currentItem);
-        GameObject.Destroy(gameObject);
+        Debug.Log(targetActor);
+        if(targetActor is PlayerEntity)
+        {
+            PlayerEntity targetPlayer = targetActor as PlayerEntity;
+            Debug.Log("User got pickup: " + currentItem);
+            targetPlayer.AddItemToInventory(currentItem);
+            GameObject.Destroy(gameObject);
+        }
+        
     }
 
     public void SetContents(Item _targeContent)

@@ -58,6 +58,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -75,6 +81,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Scripts\Enemy Behavior\EnemyWalk.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\BaseEntity.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\EnemyEntity.cs" />
+    <Compile Include="Assets\Assets\Scripts\Entities\PlayerEntity.cs" />
     <Compile Include="Assets\Assets\Scripts\Interactive Objects\InteractiveContainer.cs" />
     <Compile Include="Assets\Assets\Scripts\Interactive Objects\InteractiveObject.cs" />
     <Compile Include="Assets\Assets\Scripts\Interactive Objects\InteractivePickup.cs" />
@@ -83,8 +93,8 @@
     <Compile Include="Assets\Assets\Scripts\Item\WeaponItem.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\CameraMove.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\ControllerManager.cs" />
-    <Compile Include="Assets\Assets\Scripts\Player\HeadBob.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerInteract.cs" />
+    <Compile Include="Assets\Assets\Scripts\Player\PlayerInventory.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
