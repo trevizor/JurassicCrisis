@@ -828,7 +828,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
-  m_Mesh: {fileID: 1518987640}
+  m_Mesh: {fileID: 1537241696}
 --- !u!114 &131068186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,7 +1151,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131068184}
-  m_Mesh: {fileID: 1518987640}
+  m_Mesh: {fileID: 1537241696}
 --- !u!4 &131068190
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,6 +1293,28 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &177483654 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 195502, guid: 1c874eb6f9fef8b41a1da40d7799dedc, type: 2}
+  m_PrefabInternal: {fileID: 1758152316}
+--- !u!114 &177483664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 177483654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c1b2a3c394e7f48adc13efb757cdf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  actionState: 0
+  mindState: 0
+  playerInventory: {fileID: 0}
+  currentControllerManager: {fileID: 0}
+  currentCamera: {fileID: 0}
+  currentRigidBody: {fileID: 0}
 --- !u!43 &221715616
 Mesh:
   m_ObjectHideFlags: 0
@@ -9680,12 +9702,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
---- !u!43 &1518987640
+--- !u!43 &1537241696
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh9680
+  m_Name: pb_Mesh15650
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16159,7 +16181,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11402468, guid: 1c874eb6f9fef8b41a1da40d7799dedc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1c874eb6f9fef8b41a1da40d7799dedc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1792261088

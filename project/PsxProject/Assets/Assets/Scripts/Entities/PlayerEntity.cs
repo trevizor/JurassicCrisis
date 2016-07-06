@@ -3,9 +3,13 @@ using System.Collections;
 
 public class PlayerEntity : BaseEntity
 {
+    [HideInInspector]
     public PlayerInventory playerInventory;
+    [HideInInspector]
     public ControllerManager currentControllerManager;
+    [HideInInspector]
     public Camera currentCamera;
+    [HideInInspector]
     public Rigidbody currentRigidBody;
     // Use this for initialization
     void Start ()
