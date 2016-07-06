@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private float maxVelocityChange;
     private float jumpHeight;
     private float actorStandHeight;
-    private float actorCrouchHeight;
     private bool isGrounded = false;
     private bool isColliding = false;
 
@@ -64,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Calculate how fast we should be moving
-        Vector3 targetVelocity = new Vector3(Input.GetAxis(currentControllerManager.walkX), 0, Input.GetAxis(currentControllerManager.walkY));
+        Vector3 targetVelocity = new Vector3(Input.GetAxis(currentControllerManager.walkX), 0, Input.GetAxis(currentControllerManager.walkY)).normalized;
         targetVelocity = currentCamera.transform.TransformDirection(targetVelocity);
         targetVelocity *= movementSpeed;
 

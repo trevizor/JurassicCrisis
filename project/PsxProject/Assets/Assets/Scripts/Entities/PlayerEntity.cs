@@ -27,4 +27,34 @@ public class PlayerEntity : BaseEntity
         playerInventory.AddItemToInventory(_targetItem);
         Debug.Log(currentControllerManager.assignedPlayer + " has " + playerInventory.Count() + " Items on his inventory.");
     }
+    
+
+
+    //State controller
+    public void SetStateRunning()
+    {
+        actionState = EntityActionStates.RUN;
+    }
+
+    public void SetStateWalking()
+    {
+        actionState = EntityActionStates.WALK;
+    }
+
+    public void SetStateCrouching()
+    {
+        actionState = EntityActionStates.CROUCH;
+    }
+
+    public void SetStateIdle()
+    {
+        actionState = EntityActionStates.IDLE;
+    }
+
+    public void SetStateJumping()
+    {
+        actionState = EntityActionStates.JUMP;
+    }
+
+    
 }
