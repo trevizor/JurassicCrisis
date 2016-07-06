@@ -13,26 +13,25 @@ public class PlayerMovement : MonoBehaviour
     private float gravityForce;
     private float maxVelocityChange;
     private float jumpHeight;
-    private float airControl;
     private float actorStandHeight;
     private float actorCrouchHeight;
-    private bool grounded = false;
+    private bool isGrounded = false;
     private bool isColliding = false;
 
     private Rigidbody currentRigidBody;
     private ControllerManager currentControllerManager;
     private Camera currentCamera;
-    
+
+    private const float HEIGHT_MODIFIER = 0.05f;
 
     void Awake()
     {
         currentRigidBody = GetComponent<Rigidbody>();
         currentControllerManager = GetComponent<ControllerManager>();
         currentCamera = Transform.FindObjectOfType<Camera>();
-        Debug.Log(currentControllerManager);
         currentRigidBody.freezeRotation = true;
         currentRigidBody.useGravity = false;
-        actorStandHeight = GetComponent<CapsuleCollider>().height + 0.1f; //adds 0.1f so it works better with slopes //TODO: find a better way to check grounded
+        actorStandHeight = GetComponent<CapsuleCollider>().height + HEIGHT_MODIFIER; //adds HEIGHT_MODIFIER so it works better with slopes //TODO: find a better way to check isGrounded
 
         walkSpeed = 3.0f;
         runSpeed = 5.0f;
@@ -40,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         gravityForce = 12.0f;
         maxVelocityChange = 2.0f;
         jumpHeight = 0.95f;
-        airControl = 0.4f;
 
     }
 
@@ -69,25 +67,28 @@ public class PlayerMovement : MonoBehaviour
         velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
         velocityChange.y = 0;
 
-        if( (!isColliding || grounded))
+        //only moves if is on ground or not colliding with a wall
+        if( (!isColliding || isGrounded))
         {
             currentRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
         }
 
-        // Jump
-        if (Input.GetButton(currentControllerManager.jump) && grounded)
+        // Jump - only jumps if isGrounded
+        if (Input.GetButton(currentControllerManager.jump) && isGrounded)
         {
             currentRigidBody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
         }
 
-        //updates grounded status
-        grounded = CheckGrounded();
+        //updates isGrounded status
+        isGrounded = CheckGrounded();
 
         // We apply gravity manually for more tuning control
-        if (!grounded)
+        if (!isGrounded)
         {
             currentRigidBody.AddForce(new Vector3(0, -gravityForce * currentRigidBody.mass, 0));
         }
+
+        //resets isColliding
         isColliding = false;
     }
 
