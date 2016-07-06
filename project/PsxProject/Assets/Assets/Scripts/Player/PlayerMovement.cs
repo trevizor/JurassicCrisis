@@ -51,13 +51,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        bool isRunPressed = Input.GetButton(currentControllerManager.run);
+        bool isCrouchPressed = Input.GetButton(currentControllerManager.crouch);
         //set how fast the player will move
         float movementSpeed = walkSpeed;
-        if (Input.GetButton(currentControllerManager.run))
+        if (isRunPressed)
         {
             movementSpeed = runSpeed;
         }
-        if (Input.GetButton(currentControllerManager.crouch))
+        if (isCrouchPressed)
         {
             movementSpeed = crouchSpeed;
         }
@@ -94,6 +96,33 @@ public class PlayerMovement : MonoBehaviour
         {
             currentRigidBody.AddForce(new Vector3(0, -gravityForce * currentRigidBody.mass, 0));
         }
+
+
+
+        //movement state control
+        if (targetVelocity.magnitude > 0)
+        {
+            if (!isRunPressed && !isCrouchPressed)
+            {
+                currentPlayerEntity.SetStateWalking();
+            }
+            else
+            {
+                if (isRunPressed)
+                {
+                    currentPlayerEntity.SetStateRunning();
+                }
+                else
+                {
+                    currentPlayerEntity.SetStateCrouching();
+                }
+            }
+        }
+        else
+        {
+            currentPlayerEntity.SetStateIdle();
+        }
+
 
         //resets isColliding
         isColliding = false;
