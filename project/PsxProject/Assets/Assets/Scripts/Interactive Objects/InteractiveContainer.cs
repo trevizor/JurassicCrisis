@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InteractiveContainer : InteractiveObject {
+public class InteractiveContainer : InteractiveObject
+{
 
 	// Use this for initialization
 

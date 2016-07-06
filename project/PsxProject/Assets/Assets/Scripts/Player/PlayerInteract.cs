@@ -18,9 +18,13 @@ public class PlayerInteract : MonoBehaviour {
 		if (Input.GetButtonDown(currentControllerManager.use))
         {
         	RaycastHit hit;
-            if( Physics.Raycast(currentRigidBody.position, currentCamera.transform.forward, out hit, 2f) ){
+            if( Physics.Raycast(currentRigidBody.position, currentCamera.transform.forward, out hit, 2.5f) ){
             	InteractiveObject target = hit.transform.gameObject.GetComponent<InteractiveObject>();
-            	target.Interact();
+                Debug.Log(target);
+                if(target is InteractiveObject)
+                {
+                    target.Interact();
+                }
             }
         }
 	}
